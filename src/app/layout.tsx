@@ -1,6 +1,10 @@
+
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Navbar from "@/components/navbar";
+import Sidebar from "@/components/sidebar";
+import { useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -14,9 +18,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+
+
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${inter.className}`}>
+        <div className="bg-white border border-gray-300 m-5 rounded-lg shadow-lg h-[93dvh]">
+          <Navbar />
+          <div className="flex">
+            <Sidebar />
+            {children}
+          </div>
+        </div>
+        <svg className="fixed bottom-0 z-[-1]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#0099ff" fillOpacity="1" d="M0,128L21.8,122.7C43.6,117,87,107,131,138.7C174.5,171,218,245,262,240C305.5,235,349,149,393,128C436.4,107,480,149,524,149.3C567.3,149,611,107,655,85.3C698.2,64,742,64,785,101.3C829.1,139,873,213,916,224C960,235,1004,181,1047,160C1090.9,139,1135,149,1178,160C1221.8,171,1265,181,1309,176C1352.7,171,1396,149,1418,138.7L1440,128L1440,320L1418.2,320C1396.4,320,1353,320,1309,320C1265.5,320,1222,320,1178,320C1134.5,320,1091,320,1047,320C1003.6,320,960,320,916,320C872.7,320,829,320,785,320C741.8,320,698,320,655,320C610.9,320,567,320,524,320C480,320,436,320,393,320C349.1,320,305,320,262,320C218.2,320,175,320,131,320C87.3,320,44,320,22,320L0,320Z"></path></svg>
+      </body>
     </html>
   );
 }
